@@ -12,7 +12,8 @@ export default class App extends Component {
     this.state = {};
     console.disableYellowBox = true;
   }
-//hola git hub
+
+  // hola git hub
   render() {
     return (
       <View style={styles.container}>

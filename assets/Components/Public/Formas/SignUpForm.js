@@ -3,7 +3,6 @@ import {
   Text, View, StyleSheet, TextInput, Button,
 } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
-import { authenticated } from '../../../Store/Services/FireBase';
 
 // styless component
 const fieldName = props => (
@@ -25,7 +24,7 @@ const fieldName = props => (
 const styles = StyleSheet.create({
   TextInput: {
     alignSelf: 'stretch',
-    marginBottom: 15,
+    marginBottom: 18,
 
   },
   line: {
@@ -90,19 +89,8 @@ const SignUpForm = props => (
     <Text>Redux Form</Text>
     <Button
       title="Registrar"
-      onPress={props.handleSubmit((values) => {
-        console.log(values);
-        authenticated.createUserWithEmailAndPassword(values.email, values.password)
-          .then((success) => {
-            console.log(success);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      })}
+      onPress={props.handleSubmit((values) => { props.registrar(values); })}
     />
-
-
   </View>);
 
 export default reduxForm({ form: 'SignUpForm', validate })(SignUpForm);

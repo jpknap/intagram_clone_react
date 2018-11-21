@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { reducer as form } from 'redux-form';
-import createSagaMiddleware from 'redux-saga'
-import funcionPrimaria from './Sagas/Sagas'
+import createSagaMiddleware from 'redux-saga';
+import funcionPrimaria from './Sagas/Sagas';
 
 
 // Funcion reducer

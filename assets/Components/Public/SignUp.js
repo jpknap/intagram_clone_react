@@ -11,12 +11,17 @@ export class SignUp extends Component {
     this.state = {};
   }
 
+
   render() {
     const { navigation } = this.props;
+
     return (
       <View style={styles.container}>
         <Text> Hola mundo  </Text>
-        <SignUpForm />
+        <SignUpForm
+          registrar={this.props.registrar}
+
+        />
         <Button
           title="SignUo"
           onPress={() => { navigation.goBack(); }}
@@ -42,8 +47,10 @@ const mapStateToProps = state => ({
 
 });
 
-const mapDispatchToProps = {
-
-};
+const mapDispatchToProps = dispatch => ({
+  registrar: (values) => {
+    dispatch({ type: 'REGISTRAR', data: values });
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
