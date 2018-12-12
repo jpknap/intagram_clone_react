@@ -12,7 +12,7 @@ const fieldName = props => (
       placeholder={props._placeholder}
       onChangeText={props.input.onChange}
       value={props.input.value}
-      keyboardType={props.input.name === 'correo' ? 'email-address' : 'default'}
+      keyboardType={props.input.name === 'email' ? 'email-address' : 'default'}
       autoCapitalize="none"
       secureTextEntry={props.input.name === 'password' || props.input.name === 'password_confirmation'}
       onBlur={props.input.onBlur}
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
 const SignInForm = props => (
   <View>
     <Field
-      name="correo"
+      name="email"
       _placeholder="prueba@gmail.com"
       component={fieldName}
     />
@@ -69,7 +69,7 @@ const SignInForm = props => (
     <Text>Redux Form</Text>
     <Button
       title="Ingresar"
-      onPress={props.handleSubmit((values) => { console.log(values); })}
+      onPress={props.handleSubmit((values) => { props.loginUsuario(values); })}
     />
 
 

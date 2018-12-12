@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import SignInForm from './Formas/SignInForm';
 
 export class Signin extends Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {};
   }
@@ -16,7 +16,9 @@ export class Signin extends Component {
     return (
       <View style={styles.container}>
         <Text>  Ingresar </Text>
-        <SignInForm />
+        <SignInForm
+          loginUsuario={this.props.loginUsuario}
+        />
         <Button
           title="Registrar"
           onPress={() => { navigation.navigate('SignUp'); }}
@@ -40,8 +42,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  aumentar: () => {
-    dispatch({ type: 'AUMENTAR_REDUCER_PRUEBA' });
+  loginUsuario: (values) => {
+    dispatch({ type: 'LOGIN_USUARIO', data: values });
   },
 });
 
