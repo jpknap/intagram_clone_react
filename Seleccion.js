@@ -12,10 +12,19 @@ class Seleccion extends Component {
   render() {
     return (
       <View>
-        <Text> textInComponent </Text>
+        <Text> Seleccion </Text>
       </View>
     );
   }
 }
+const mapStateToProps = state => ({
+  prop: state.prop,
+});
+
+const mapDispatchToProps = dispatch => ({
+  dispatchOne: () => {
+    //
+  },
+});
 
 export default connect (mapStateToProps, mapDispatch) (Seleccion);
