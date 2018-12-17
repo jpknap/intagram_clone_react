@@ -1,11 +1,12 @@
 import { takeEvery, call } from 'redux-saga/effects';
 import { authenticated, dataBase } from '../Services/FireBase';
+import CONSTANTS from '../CONSTANTS';
 
 const registrarWithFireBase = values => authenticated.createUserWithEmailAndPassword(values.email, values.password)
   .then(success => success.user.toJSON());
 
 const registrarInDataBase = ({ uid, email, nombre }) => {
-  dataBase.ref(`usuarios/${uid}`).set({
+  const x = dataBase.ref(`usuarios/${uid}`).set({
     nombre,
     email,
   });
@@ -15,6 +16,7 @@ const loginUsuarioFireBase = values => authenticated.signInWithEmailAndPassword(
 
 function* registrarUsuario(values) {
   try {
+    console.log("hola mundo");
     const returned_fireBase = yield call(registrarWithFireBase, values.data);
     const { uid, email } = returned_fireBase;
     const { data: { nombre } } = values;
@@ -34,6 +36,6 @@ function* loginUsuario(values) {
 }
 
 export default function* primeraSaga() {
-  yield takeEvery('REGISTRAR', registrarUsuario);
-  yield takeEvery('LOGIN_USUARIO', loginUsuario);
+  yield takeEvery(CONSTANTS.REGISTRO, registrarUsuario);
+  yield takeEvery(CONSTANTS.LOGIN_USUARIO, loginUsuario);
 }

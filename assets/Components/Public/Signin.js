@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import SignInForm from './Formas/SignInForm';
+import { actionLogin } from '../../Store/ACTIONS';
 
 export class Signin extends Component {
   constructor() {
@@ -43,7 +44,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   loginUsuario: (values) => {
-    dispatch({ type: 'LOGIN_USUARIO', data: values });
+    dispatch(actionLogin(values));
   },
 });
 
