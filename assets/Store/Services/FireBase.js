@@ -10,5 +10,3 @@ firebase.initializeApp(config);
 
 export const authenticated = firebase.auth(); 
 export const dataBase = firebase.database(); 
-
-export

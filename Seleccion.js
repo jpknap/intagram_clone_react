@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import { authenticated } from './assets/Store/Services/FireBase';
 
 class Seleccion extends Component {
   constructor(props) {
     super(props);
     this.state = {
     };
+  }
+  componentDidMount() {
+
   }
 
   render() {
@@ -22,9 +26,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchOne: () => {
-    //
+  authenticated: () => {
+    authenticated.onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user);
+      } else {
+        console.log('user null');
+      }
+    });
   },
 });
 
-export default connect (mapStateToProps, mapDispatch) (Seleccion);
+export default connect(mapStateToProps, mapDispatchToProps)(Seleccion);
